@@ -7,3 +7,4 @@ Output tab-delimited file looks like:
   chr1 801957 314 252 287
   chr1 866511 212 128 169
 ```
+with samples in columns and positions in lines.

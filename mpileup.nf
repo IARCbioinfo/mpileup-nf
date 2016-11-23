@@ -18,7 +18,7 @@ fasta_ref = file( params.fasta_ref )
 fasta_ref_fai = file( params.fasta_ref+'.fai' )
 
 params.map_qual = 20
-params.base_qual = 20 
+params.base_qual = 20
 params.max_DP = 50000
 
 params.help = null
@@ -120,10 +120,10 @@ process split_bed {
       tag { region_tag }
 
       input:
-      set val(region_tag), file('sample*.txt') from table
+      set val(region_tag), file(table) from table
       file 'BAM/*' from bam
       val sample_names
-	
+
       output:
       file '*_cov.txt' into cov mode flatten
 
@@ -160,7 +160,7 @@ process split_bed {
 
       output:
       file "$out_table" into table_merged
-	
+
       shell:
       '''
       head -n1 `ls -1 *cov.txt | head -1` > header.txt
@@ -169,4 +169,3 @@ process split_bed {
       mv header.txt !{out_table}
       '''
   }
-

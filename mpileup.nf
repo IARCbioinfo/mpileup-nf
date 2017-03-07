@@ -4,8 +4,8 @@ params.nsplit = 1
 
 bed = file(params.bedfile)
 
-bam = Channel.fromPath( params.bam_folder+'/*.bam' ).toList()
-bai = Channel.fromPath( params.bam_folder+'/*.bam.bai' ).toList()
+bam = Channel.fromPath( params.bam_folder+'/*.bam' ).collect()
+bai = Channel.fromPath( params.bam_folder+'/*.bam.bai' ).collect()
 
 params.use_file_name = null
 sample_names = params.use_file_name ? "FILE" : "BAM"
@@ -156,7 +156,7 @@ process split_bed {
 
       input:
       val out_table
-      file all_cov from cov.toList()
+      file all_cov from cov.collect()
 
       output:
       file "$out_table" into table_merged

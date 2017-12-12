@@ -18,8 +18,8 @@ fasta_ref = file( params.fasta_ref )
 fasta_ref_fai = file( params.fasta_ref+'.fai' )
 
 params.map_qual = 20
-params.base_qual = 20
-params.max_DP = 50000
+params.base_qual = 13
+params.max_DP = 200000
 
 params.help = null
 
